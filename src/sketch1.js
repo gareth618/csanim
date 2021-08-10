@@ -52,7 +52,6 @@ export default function sketch1(p5) {
     }
   }
   csa.play(showAnimation, .5);
-  csa.saveScreen();
   csa.wait(3);
 
   const text = new CSanim.Text(csa, [50, csa.h - 100], '**DFS:**');
