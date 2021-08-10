@@ -496,6 +496,10 @@ export default class CSanim {
     this.play([], duration);
   }
 
+  saveScreen() {
+    this.toSave = this.frames.length - 1;
+  }
+
   run(p5) {
     let active = false;
     let paused = false;
@@ -509,13 +513,19 @@ export default class CSanim {
       p5.textFont("'Source Code Pro', monospace");
     };
 
+    let fps = 1;
     let crtFrame = 0;
     p5.draw = () => {
       p5.background(paused ? 75 : 30);
       if (!active) {
+        p5.fill(...CSanim.BLUE);
+        p5.circle(this.w / 2, this.h / 2, 70);
         p5.fill(250);
-        p5.textSize(25);
-        p5.text('Click pentru' + (this.w > 300 ? ' ' : '\n') + 'a începe!', this.w / 2, this.h / 2);
+        p5.triangle(
+          this.w / 2 - 12, this.h / 2 - 20,
+          this.w / 2 - 12, this.h / 2 + 20,
+          this.w / 2 + 22, this.h / 2
+        );
         p5.cursor(p5.HAND);
       }
       else {
@@ -524,7 +534,11 @@ export default class CSanim {
             shape.draw(p5);
           }
         }
-        if (++crtFrame === this.frames.length) {
+        if (crtFrame === this.toSave) {
+          p5.save('ss.png');
+        }
+        crtFrame += fps;
+        if (crtFrame >= this.frames.length) {
           active = false;
         }
       }
@@ -546,6 +560,23 @@ export default class CSanim {
           paused = true;
         }
       }
-    }
+    };
+
+    p5.keyPressed = () => {
+      if (active && !paused) {
+        if (p5.keyCode === p5.LEFT_ARROW) {
+          crtFrame = Math.max(crtFrame - 180, 0);
+        }
+        if (p5.keyCode === p5.RIGHT_ARROW) {
+          crtFrame = Math.min(crtFrame + 180, this.frames.length - 1);
+        }
+        if (p5.keyCode === p5.UP_ARROW) {
+          fps = Math.min(fps + 1, 5);
+        }
+        if (p5.keyCode === p5.DOWN_ARROW) {
+          fps = Math.max(fps - 1, 1);
+        }
+      }
+    };
   }
 };

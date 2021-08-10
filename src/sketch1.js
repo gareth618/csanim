@@ -52,6 +52,7 @@ export default function sketch1(p5) {
     }
   }
   csa.play(showAnimation, .5);
+  csa.saveScreen();
   csa.wait(3);
 
   const text = new CSanim.Text(csa, [50, csa.h - 100], '**DFS:**');
@@ -82,10 +83,7 @@ export default function sketch1(p5) {
 
   const hideAnimation = [text.fadeOut()];
   for (let i = 0; i < nodes; i++) {
-    hideAnimation.push(circles[i].moveTo([
-      Math.random() * csa.w,
-      Math.random() * csa.h
-    ]));
+    hideAnimation.push(circles[i].rotate());
     hideAnimation.push(circles[i].zoomOut());
     for (const j of edges[i]) {
       hideAnimation.push(lines[i][j].fadeOut());

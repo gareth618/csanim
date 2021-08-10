@@ -16,14 +16,13 @@ function Sketch({ sketch }) {
         mousePressed();
       });
     }
-    if (myP5.keyTyped != null) {
-      const keyTyped = myP5.keyTyped;
-      myP5.keyTyped = null;
-      document.addEventListener('keydown', () => {
+    if (myP5.keyPressed != null) {
+      const fun = myP5.keyPressed;
+      myP5.keyPressed = () => {
         if (!(0 <= myP5.mouseX && myP5.mouseX <= myP5.width)) return;
         if (!(0 <= myP5.mouseY && myP5.mouseY <= myP5.height)) return;
-        keyTyped();
-      });
+        fun();
+      };
     }
   }, [sketch, ref]);
   return <div style={{ width: 'fit-content', margin: '1rem auto' }} ref={ref} />;
