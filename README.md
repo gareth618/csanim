@@ -6,4 +6,4 @@ It's based on [P5.JS](https://p5js.org/), and inspired by 3Blue1Brown's [Manim](
 
 **Demo:** [click here](https://zen-bardeen-e5e882.netlify.app/)
 
-![demo](https://i.ibb.co/cDD9LCj/Captura-de-ecran-din-2021-08-10-la-15-11-18.png)
+![demo](https://i.ibb.co/8KB6XpD/Captura-de-ecran-din-2021-08-10-la-15-16-06.png)

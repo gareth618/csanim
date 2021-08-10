@@ -73,7 +73,7 @@ export default function sketch1(p5) {
       csa.play(lines[node][son].zoomColorToBeg(CSanim.WHITE), 1);
     }
     csa.play([
-      circles[node].changeColorTo(CSanim.ORANGE),
+      circles[node].changeColorTo(CSanim.GREEN),
       circles[node].changeTextColorTo(CSanim.BLACK)
     ], 1);
   };
