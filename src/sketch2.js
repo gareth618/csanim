@@ -1,6 +1,6 @@
 import CSanim from './CSanim';
 
-export default function sketch(p5) {
+export default function sketch2(p5) {
   const csa = new CSanim(400, 200);
   const array = [4, 3, 7, 2, 5, 9, 8, 1, 3];
 

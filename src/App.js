@@ -1,8 +1,10 @@
 import React from 'react';
 import p5 from 'p5';
-import sketch from './sketch';
 
-export default function App() {
+import sketch1 from './sketch1';
+import sketch2 from './sketch2';
+
+function Sketch({ sketch }) {
   const ref = React.useRef(null);
   React.useEffect(() => {
     const myP5 = new p5(sketch, ref.current);
@@ -23,6 +25,15 @@ export default function App() {
         keyTyped();
       });
     }
-  }, [ref]);
+  }, [sketch, ref]);
   return <div style={{ width: 'fit-content', margin: '1rem auto' }} ref={ref} />;
+}
+
+export default function App() {
+  return (
+    <>
+      <Sketch sketch={sketch1} />
+      <Sketch sketch={sketch2} />
+    </>
+  );
 };
