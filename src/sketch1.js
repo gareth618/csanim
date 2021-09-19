@@ -65,7 +65,7 @@ export default function sketch1(p5) {
       text.changeTextTo(text.text + (node === 6 ? '\n' : ' ') + (node + 1))
     ], 1);
     if (edges[node].length === 0) {
-      csa.wait(1);
+      csa.wait();
     }
     for (const son of edges[node]) {
       csa.play(lines[node][son].zoomColorToEnd(CSanim.RED), 1);
